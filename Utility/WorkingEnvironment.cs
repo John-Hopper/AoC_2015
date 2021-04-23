@@ -16,13 +16,14 @@ namespace Utility_Library
         /// <returns>WorkingEnvironment class</returns>
         public WorkingEnvironment EnvironmentInfo()
         {
-            WorkingEnvironment dataReturn = new WorkingEnvironment();
-
-            dataReturn.OsVersion = Convert.ToString(Environment.OSVersion);
-            dataReturn.CurrentDirectory = Convert.ToString(Environment.CurrentDirectory);
-            dataReturn.MachineName = Convert.ToString(Environment.MachineName);
-            dataReturn.UserDomainName = Convert.ToString(Environment.UserDomainName);
-            dataReturn.UserName = Convert.ToString(Environment.UserName);
+            WorkingEnvironment dataReturn = new WorkingEnvironment
+            {
+                OsVersion = Convert.ToString(Environment.OSVersion),
+                CurrentDirectory = Convert.ToString(Environment.CurrentDirectory),
+                MachineName = Convert.ToString(Environment.MachineName),
+                UserDomainName = Convert.ToString(Environment.UserDomainName),
+                UserName = Convert.ToString(Environment.UserName)
+            };
 
             return dataReturn;
         }

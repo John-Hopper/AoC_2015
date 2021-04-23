@@ -9,8 +9,10 @@ namespace Utility_Library
         public Globals GetGlobalVariables()
         {
             // initialize
-            Globals dataReturn = new Globals();
-            dataReturn.Failed = false;
+            Globals dataReturn = new Globals
+            {
+                Failed = false
+            };
             WorkingEnvironment enviromentData = new WorkingEnvironment();
 
             // Get environment info

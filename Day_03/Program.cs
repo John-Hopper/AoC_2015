@@ -20,9 +20,9 @@ namespace Day_03
             }
 
             //read data file
-            var dimensionsData = DataRepository.ReadToString($"{globalVariables.DataPath}151203 Input.txt");
+            var directionsData = DataRepository.ReadToString($"{globalVariables.DataPath}151203 Input.txt");
 
-            Console.WriteLine(dimensionsData);
+            Console.WriteLine(directionsData);
             Console.ReadLine();
         }
     }
