@@ -51,8 +51,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utility_Library\Utility_Library.csproj">
-      <Project>{bd6599bd-97d0-40c7-b1fa-1b4015f56b49}</Project>
+    <ProjectReference Include="..\Utility\Utility_Library.csproj">
+      <Project>{bb602385-ed1a-4e2c-ba69-3ef7d55c721e}</Project>
       <Name>Utility_Library</Name>
     </ProjectReference>
   </ItemGroup>
