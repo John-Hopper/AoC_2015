@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Utility_Library;
 
 namespace Day_02
@@ -8,36 +9,29 @@ namespace Day_02
     {
         static void Main(string[] args)
         {
-            // initialize Global Variables & get variable info
-            Globals globalVariables = new Globals();
-            globalVariables = globalVariables.GetGlobalVariables();
-
-            // check environment and global variables initialized ok
-            if (globalVariables.Failed)
-            {
-                Console.WriteLine($"Environment not found - Initialization Failed");
-                Console.ReadLine();
-                return;
-            }
+            Stopwatch stopwatch = new Stopwatch();
 
             //read data file
-            var dimensionsData = DataRepository.ReadToArray($"{globalVariables.DataPath}151202 Input.txt");
+            var data = DataRepository.ReadToArray("151202 Input.txt");
 
             //PART ONE
 
+            Console.WriteLine("---PART ONE---\n\r");
+
+            stopwatch.Start();
             //dimensionData to list of presents
             var presentsList = new List<Present>();
 
             //populate list of presents
-            foreach(string dimensionData in dimensionsData)
+            foreach(string dimensionData in data)
             {
                 // split line of password data into individual parts
-                string[] data = dimensionData.Split('x');
+                string[] dimension = dimensionData.Split('x');
                 presentsList.Add(new Present() 
                 {
-                    Length=int.Parse(data[0]), 
-                    Width=int.Parse(data[1]), 
-                    Height=int.Parse(data[2]) 
+                    Length=int.Parse(dimension[0]), 
+                    Width=int.Parse(dimension[1]), 
+                    Height=int.Parse(dimension[2]) 
                 });
             }
 
@@ -48,12 +42,17 @@ namespace Day_02
                 wrappingToOrder += present.TotalWrapping;
             }
 
-            Console.WriteLine("--PART ONE--\r\n");
-            Console.WriteLine($"Total wrapping to order for presents = {wrappingToOrder}\r\n");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Total wrapping to order for presents = {wrappingToOrder}");
+            Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
             //PART TWO
 
+            Console.WriteLine("\n\r---PART TWO---\n\r");
+
+            stopwatch.Start();
             int ribbonToOrder = 0;
 
             foreach (Present present in presentsList)
@@ -61,8 +60,10 @@ namespace Day_02
                 ribbonToOrder += present.TotalRibbon;
             }
 
-            Console.WriteLine("--PART TWO--\r\n");
-            Console.WriteLine($"Total ribbon to order for presents = {ribbonToOrder}\r\n");
+            stopwatch.Stop();
+
+            Console.WriteLine($"Total ribbon to order for presents = {ribbonToOrder}");
+            Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Utility_Library;
 
@@ -9,63 +10,64 @@ namespace Day_03
     {
         static void Main(string[] args)
         {
-            // initialize Global Variables & get variable info
-            Globals globalVariables = new Globals();
-            globalVariables = globalVariables.GetGlobalVariables();
-
-            // check environment and global variables initialized ok
-            if (globalVariables.Failed)
-            {
-                Console.WriteLine($"Environment not found - Initialization Failed");
-                Console.ReadLine();
-                return;
-            }
+            Stopwatch stopwatch = new Stopwatch();
 
             //read data file
-            var directionsData = DataRepository.ReadToString($"{globalVariables.DataPath}151203 Input.txt");
-            //directionsData = "^>v<";
+            var data = DataRepository.ReadToString("151203 Input.txt");
 
-            // PART 1
+            data = "^>v<";
 
-            Console.WriteLine("Part 1\n\r");
+            //PART ONE
 
-            var houseaddressList = new List<string>();
-            var houseCoOrdinates = new HouseCoOrdinates();
+            var addressDictionary = new Dictionary<(int, int), int>();
 
-            houseaddressList = houseCoOrdinates.GetHouseAddresses(directionsData);
+            addressDictionary.Add((0,0),1);
 
-            int distinctAddresses = (from x in houseaddressList select x).Distinct().Count();
+            Console.WriteLine("---PART ONE---\n\r");
+            stopwatch.Start();
 
-            Console.WriteLine($"Number of distinct delivery addresses: {distinctAddresses}\n\r");
+            //var houseaddressList = new List<string>();
+            //var houseCoOrdinates = new HouseCoOrdinates();
+
+            //houseaddressList = houseCoOrdinates.GetHouseAddresses(data);
+
+            //int distinctAddresses = (from x in houseaddressList select x).Distinct().Count();
+
+            stopwatch.Stop();
+            Console.WriteLine($"Number of distinct delivery addresses: ");
+            Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
-            // PART 2
+            //PART TWO
 
-            string santaDirections = "";
-            string roboDirections = "";
-            var santaHouseaddress = new List<string>();
-            var roboHouseaddress = new List<string>();
+            Console.WriteLine("\n\r---PART TWO---\n\r");
 
-            for (int index=0; index < directionsData.Length; index++)
-            {
-                if (index % 2 == 0)
-                {
-                    santaDirections += directionsData[index];
-                }
-                else
-                {
-                    roboDirections += directionsData[index];
-                }
-            }
+            //string santaDirections = "";
+            //string roboDirections = "";
+            //var santaHouseaddress = new List<string>();
+            //var roboHouseaddress = new List<string>();
 
-            santaHouseaddress = houseCoOrdinates.GetHouseAddresses(santaDirections);
-            roboHouseaddress = houseCoOrdinates.GetHouseAddresses(roboDirections);
+            //for (int index=0; index < directionsData.Length; index++)
+            //{
+            //    if (index % 2 == 0)
+            //    {
+            //        santaDirections += directionsData[index];
+            //    }
+            //    else
+            //    {
+            //        roboDirections += directionsData[index];
+            //    }
+            //}
 
-            var duoHouseaddress = santaHouseaddress.Concat(roboHouseaddress).ToList();
+            //santaHouseaddress = houseCoOrdinates.GetHouseAddresses(santaDirections);
+            //roboHouseaddress = houseCoOrdinates.GetHouseAddresses(roboDirections);
 
-            distinctAddresses = (from x in duoHouseaddress select x).Distinct().Count();
+            //var duoHouseaddress = santaHouseaddress.Concat(roboHouseaddress).ToList();
 
-            Console.WriteLine($"Number of distinct delivery addresses for duel rounds: {distinctAddresses}\n\r");
+            //distinctAddresses = (from x in duoHouseaddress select x).Distinct().Count();
+            stopwatch.Stop();
+            Console.WriteLine($"Number of distinct delivery addresses for duel rounds: ");
+            Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
         }
 

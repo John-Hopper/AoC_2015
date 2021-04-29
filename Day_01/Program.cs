@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using Utility_Library;
 
@@ -9,44 +9,45 @@ namespace Day_01
     {
         static void Main(string[] args)
         {
-            // initialize Global Variables & get variable info
-            Globals globalVariables = new Globals();
-            globalVariables = globalVariables.GetGlobalVariables();
-
-            // check environment and global variables initialized ok
-            if (globalVariables.Failed)
-            {
-                Console.WriteLine($"Environment not found - Initialization Failed");
-                Console.ReadLine();
-                return;
-            }
+            Stopwatch stopwatch = new Stopwatch();
 
             //read data file
-            string directionsData = File.ReadAllText($"{globalVariables.DataPath}151201 Input.txt");
+            var data = DataRepository.ReadToString("151201 Input.txt");
 
-            //Part One
+            //PART ONE
 
-            var upFloor = directionsData.Count(d=> d == '(');
-            var downFloor = directionsData.Count(d => d == ')');
+            Console.WriteLine("---PART ONE---\n\r");
+            stopwatch.Start();
+
+            var upFloor = data.Count(d=> d == '(');
+            var downFloor = data.Count(d => d == ')');
 
             var destinationFloor = upFloor - downFloor;
 
+            stopwatch.Stop();
+
             Console.WriteLine($"Santa's destination floor : {destinationFloor}");
+            Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
-            //Part Two
+            //PART TWO
 
+            Console.WriteLine("\n\r---PART TWO---\n\r");
+
+            stopwatch.Start();
             var floorNumber = 0;
             var InstructionCount = 1;
 
-            foreach(char direction in directionsData)
+            foreach(char direction in data)
             {
                 if (direction == '(') floorNumber++;
                 if (direction == ')') floorNumber--;
 
                 if (floorNumber < 0)
                 {
+                    stopwatch.Stop();
                     Console.WriteLine($"Arrive in basement on instruction number : {InstructionCount}");
+                    Console.WriteLine(stopwatch.Elapsed);
                     Console.ReadLine();
                     Environment.Exit(0);
                 }

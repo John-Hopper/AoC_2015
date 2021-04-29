@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Utility_Library
 {
     public class Globals
@@ -13,9 +15,9 @@ namespace Utility_Library
             {
                 Failed = false
             };
-            WorkingEnvironment enviromentData = new WorkingEnvironment();
 
             // Get environment info
+            WorkingEnvironment enviromentData = new WorkingEnvironment();
             enviromentData = enviromentData.EnvironmentInfo();
 
             // Pick input data path to return based on environment found
@@ -30,6 +32,14 @@ namespace Utility_Library
                 default:
                     dataReturn.Failed = true;
                     break;
+            }
+
+            // check environment and global variables initialized ok
+            if (dataReturn.Failed)
+            {
+                Console.WriteLine($"Environment not found - Initialization Failed");
+                Console.ReadLine();
+                Environment.Exit(0);
             }
             return dataReturn;
         }
