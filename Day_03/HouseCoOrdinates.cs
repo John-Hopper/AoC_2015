@@ -12,27 +12,78 @@ namespace Day_03
 
         public int YAxis { get; set; }
 
+        private string _address;
+
+        public string Address
+        {
+            get { return Convert.ToString(XAxis) + Convert.ToString(YAxis); }
+        }
+
+
         public HouseCoOrdinates GetHouseCoOrdinates(HouseCoOrdinates previousCoOrdinates, char direction)
         {
-            var newCoOrdinates = previousCoOrdinates;
+            var newCoOrdinates = new HouseCoOrdinates();
 
             switch (direction)
             {
                 case '^':
-                    newCoOrdinates.YAxis += 1;
+                    newCoOrdinates.YAxis = previousCoOrdinates.YAxis + 1;
                     break;
                 case 'v':
-                    newCoOrdinates.YAxis -= 1;
+                    newCoOrdinates.YAxis = previousCoOrdinates.YAxis - 1;
                     break;
                 case '>':
-                    newCoOrdinates.XAxis += 1;
+                    newCoOrdinates.XAxis = previousCoOrdinates.XAxis + 1;
                     break;
                 case '<':
-                    newCoOrdinates.XAxis -= 1;
+                    newCoOrdinates.XAxis = previousCoOrdinates.XAxis - 1;
                     break;
             }
 
             return newCoOrdinates;
         }
+
+        public List<string> GetHouseAddresses(string directionData)
+        {
+            var returnedHouseAddresses = new List<string>();
+            var coOrdinateList = new List<HouseCoOrdinates>();
+            //var previousCoOrdinates = new HouseCoOrdinates()
+            //{
+            //    XAxis = 0,
+            //    YAxis = 0
+            //};
+            var newCordinates = new HouseCoOrdinates();
+            //var houseaddress = new List<string>();
+            var previousCoOrdinateIndex = 0;
+
+            coOrdinateList.Add(new HouseCoOrdinates()
+            {
+                XAxis = 0,
+                YAxis = 0
+            });
+
+            //coOrdinateList.Add(previousCoOrdinates);
+
+            foreach (char direction in directionData)
+            {
+                //newCordinates = newCordinates.GetHouseCoOrdinates(previousCoOrdinates, direction);
+                //coOrdinateList.Add(new HouseCoOrdinates() 
+                //{ 
+                //    XAxis = newCordinates.XAxis, 
+                //    YAxis = newCordinates.YAxis 
+                //});
+                coOrdinateList.Add(newCordinates.GetHouseCoOrdinates(coOrdinateList[previousCoOrdinateIndex], direction));
+                previousCoOrdinateIndex++;
+            }
+
+            foreach (HouseCoOrdinates house in coOrdinateList)
+            {
+                returnedHouseAddresses.Add(house.Address);
+            }
+
+            return returnedHouseAddresses;
+        }
+
+
     }
 }
