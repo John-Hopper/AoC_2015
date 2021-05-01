@@ -15,58 +15,42 @@ namespace Day_03
             //read data file
             var data = DataRepository.ReadToString("151203 Input.txt");
 
-            data = "^>v<";
-
             //PART ONE
-
-            var addressDictionary = new Dictionary<(int, int), int>();
-
-            addressDictionary.Add((0,0),1);
 
             Console.WriteLine("---PART ONE---\n\r");
             stopwatch.Start();
 
-            //var houseaddressList = new List<string>();
-            //var houseCoOrdinates = new HouseCoOrdinates();
-
-            //houseaddressList = houseCoOrdinates.GetHouseAddresses(data);
-
-            //int distinctAddresses = (from x in houseaddressList select x).Distinct().Count();
+            var addressDictionary = Address.GetAddresses(data);
 
             stopwatch.Stop();
-            Console.WriteLine($"Number of distinct delivery addresses: ");
+            Console.WriteLine($"Number of distinct delivery addresses: {addressDictionary.Count} ");
             Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
             //PART TWO
 
             Console.WriteLine("\n\r---PART TWO---\n\r");
+            stopwatch.Start();
 
-            //string santaDirections = "";
-            //string roboDirections = "";
-            //var santaHouseaddress = new List<string>();
-            //var roboHouseaddress = new List<string>();
+            string santaDirections = "";
+            string roboDirections = "";
 
-            //for (int index=0; index < directionsData.Length; index++)
-            //{
-            //    if (index % 2 == 0)
-            //    {
-            //        santaDirections += directionsData[index];
-            //    }
-            //    else
-            //    {
-            //        roboDirections += directionsData[index];
-            //    }
-            //}
+            for (int index = 0; index < data.Length; index++)
+            {
+                if (index % 2 == 0)
+                {
+                    santaDirections += data[index];
+                }
+                else
+                {
+                    roboDirections += data[index];
+                }
+            }
 
-            //santaHouseaddress = houseCoOrdinates.GetHouseAddresses(santaDirections);
-            //roboHouseaddress = houseCoOrdinates.GetHouseAddresses(roboDirections);
+            var duelAddressDictionary = Address.GetAddresses(santaDirections, roboDirections);
 
-            //var duoHouseaddress = santaHouseaddress.Concat(roboHouseaddress).ToList();
-
-            //distinctAddresses = (from x in duoHouseaddress select x).Distinct().Count();
             stopwatch.Stop();
-            Console.WriteLine($"Number of distinct delivery addresses for duel rounds: ");
+            Console.WriteLine($"Number of delivery's made by Santa & Robo-Santa combined: {duelAddressDictionary.Count}");
             Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
         }
