@@ -14,10 +14,16 @@ namespace Day_05
             Stopwatch stopwatch = new Stopwatch();
 
             //read data file
-            var data = DataRepository.ReadToArray("151205 Input.txt");
+            var data = DataRepository.ReadToArray("151205 Input.txt"); //("C&C.txt");
+            //string[] data = new string[] { "qjhvhtzxzqqjkmpb" };
+            //string[] data = new string[] { "xilodxfuxphuiiii" };
+            //string[] data = new string[] { "xxyxx" };
+            //string[] data = new string[] { "uurcxstgmygtbstg" };
+            //string[] data = new string[] { "ieodomkazucvgmuy" };
+            //string[] data = new string[] { "aaa" };
 
             //PART ONE
-
+            var datacount = data.Length;
             Console.WriteLine("---PART ONE---\n\r");
             stopwatch.Start();
 
@@ -25,17 +31,17 @@ namespace Day_05
 
             foreach (string line in data)
             {
-                if (!ContainsDisallowedLetterSet(line)) 
+                if (!ContainsDisallowedLetterSet(line))
                 {
                     if (ContainsVowel(line))
                     {
-                        if(ContainsDoubleLetter(line)) niceCount++;
+                        if (ContainsDoubleLetter(line)) niceCount++;
                     }
                 }
-            }           
+            }
 
             stopwatch.Stop();
-            Console.WriteLine($"secret number with giving five zeros: {niceCount}");
+            Console.WriteLine($"Part one nice list count: {niceCount}");
             Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
@@ -43,10 +49,29 @@ namespace Day_05
             Console.WriteLine("---PART TWO---\n\r");
             stopwatch.Start();
 
-            
+            niceCount = 0;
+
+
+            foreach (string line in data)
+            {
+                //Console.WriteLine($"{line} - {datacount}");
+                if (ContainsDuplicateDoubles(line)) //niceCount++;
+                {
+                    Console.WriteLine($"{line} - passed doubles");
+                    if (ContainsRepeatedSeperatedLetter(line))
+                    {
+                        Console.WriteLine($"{line} - repeats passed");
+                        niceCount++;
+                        //Console.ReadLine();
+                    }
+                }
+                //Console.ReadLine();
+                //datacount--;
+            }
+            //Console.WriteLine(datacount);
 
             stopwatch.Stop();
-            Console.WriteLine($"secret number with giving six zeros: {1}");
+            Console.WriteLine($"Part two nice list count: {niceCount}");
             Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
 
