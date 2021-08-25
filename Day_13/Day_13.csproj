@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3AF2A91-6773-405E-A96C-1CAD730D578C}</ProjectGuid>
+    <ProjectGuid>{90BEAE9E-72F6-4C9C-9038-12FD6A5D09BD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day_07</RootNamespace>
-    <AssemblyName>Day_07</AssemblyName>
+    <RootNamespace>Day_13</RootNamespace>
+    <AssemblyName>Day_13</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Instruction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeatingPair.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

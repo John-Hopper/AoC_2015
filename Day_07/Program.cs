@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utility_Library;
 
 namespace Day_07
@@ -14,6 +11,7 @@ namespace Day_07
         {
             Stopwatch stopwatch = new Stopwatch();
             string[] Data = DataRepository.ReadToArray("151207 Input.txt");
+
             Dictionary<string, int> WiresDictionary = new Dictionary<string, int>();
             List<Instruction> InstructionList = new List<Instruction>();
             Instruction Instruction = new Instruction();
@@ -175,15 +173,13 @@ namespace Day_07
             Console.ReadLine();
 
             int keyATransfer = WiresDictionary["a"];
+            InstructionList.Clear();
+            WiresDictionary.Clear();
+            Data[334] = $"{keyATransfer} -> b";
 
             //PART TWO
             Console.WriteLine("---PART TWO---\n\r");
             stopwatch.Start();
-
-            InstructionList.Clear();
-            WiresDictionary.Clear();
-
-            Data[334] = $"{keyATransfer} -> b";
 
             foreach (string line in Data)
             {
@@ -337,6 +333,5 @@ namespace Day_07
             Console.WriteLine(stopwatch.Elapsed);
             Console.ReadLine();
         }
-
     }
 }

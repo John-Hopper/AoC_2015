@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3AF2A91-6773-405E-A96C-1CAD730D578C}</ProjectGuid>
+    <ProjectGuid>{FFFC089F-3FFB-4CDD-A679-601A0E0FCBD4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day_07</RootNamespace>
-    <AssemblyName>Day_07</AssemblyName>
+    <RootNamespace>Day_11</RootNamespace>
+    <AssemblyName>Day_11</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Instruction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utility\Utility_Library.csproj">
-      <Project>{bb602385-ed1a-4e2c-ba69-3ef7d55c721e}</Project>
-      <Name>Utility_Library</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

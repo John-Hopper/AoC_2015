@@ -4,10 +4,6 @@ namespace Day_07
 {
     public class Instruction
     {
-        private static int _count;
-
-        public int Index { get; set; }
-
         public string Input1 { get; set; }
 
         public string Input2 { get; set; }
@@ -18,31 +14,6 @@ namespace Day_07
 
         public bool IsComplete { get; set; }
 
-        private int _numberOfInputs;
-        public int NumberOfInputs
-        {
-            get { return _numberOfInputs; }
-            set { _numberOfInputs = (Input1.Length+Input2.Length>Input1.Length) ? 2:1; }
-        }
-
-        //private bool _input1IsNumeric;
-        //public bool Input1Type
-        //{
-        //    get { return _input1IsNumeric; }
-        //    set { _input1IsNumeric = Input1.IsNumeric(); }
-        //}
-
-        //private bool _input2Type;
-        //public bool Input2Type
-        //{
-        //    get { return _input2Type; }
-        //    set { _input2Type = Input2.IsNumeric(); }
-        //}
-
-        public Instruction()
-        {
-            Index = ++_count;
-        }
 
         public Instruction BuildInstruction(string rawData)
         {
